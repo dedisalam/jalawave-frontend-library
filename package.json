@@ -1,0 +1,47 @@
+{
+  "name": "jalawave-frontend-library",
+  "version": "0.0.0",
+  "scripts": {
+    "postinstall": "npm run build",
+    "clean": "rimraf dist/",
+    "build": "npm run clean && rollup -c"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^23.0.2",
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "@rollup/plugin-typescript": "^9.0.2",
+    "@types/node": "^18.11.9",
+    "@types/react": "^18.0.25",
+    "@types/react-query": "^1.2.9",
+    "@types/react-router-bootstrap": "^0.24.5",
+    "@typescript-eslint/eslint-plugin": "^5.28.0",
+    "@typescript-eslint/parser": "^5.41.0",
+    "eslint": "^8.18.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-typescript": "^17.0.0",
+    "eslint-import-resolver-typescript": "^3.5.2",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-react": "^7.30.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "rimraf": "^3.0.2",
+    "rollup": "^3.3.0",
+    "rollup-plugin-dts": "^5.0.0",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "typescript": "^4.9.3"
+  },
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "files": [
+    "dist"
+  ],
+  "types": "dist/index.d.ts",
+  "peerDependencies": {
+    "axios": "^1.1.3",
+    "react": "^18.2.0",
+    "react-bootstrap": "^2.6.0",
+    "react-bootstrap-icons": "^1.9.1",
+    "react-query": "^3.39.2",
+    "react-router-bootstrap": "^0.26.2"
+  }
+}
