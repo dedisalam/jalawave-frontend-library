@@ -1,7 +1,8 @@
-import ButtonDelete from '../button/delete';
-import ButtonEdit from '../button/edit';
+import ButtonGroup from '../buttonGroup';
 import React from 'react';
-import { ButtonGroup, ButtonToolbar, Table as TableBS } from 'react-bootstrap';
+import { Table as TableBS } from 'react-bootstrap';
+import type { UseMutationResult } from 'react-query';
+import type { AxiosError, AxiosResponse } from 'axios';
 
 interface TableActionProps {
   columns: {
@@ -11,10 +12,13 @@ interface TableActionProps {
   rows: {
     [keys: string]: string
   }[],
-  href: string
+  onDelete: UseMutationResult<AxiosResponse, AxiosError, unknown, void>,
+  onEdit: string
 }
 function TableAction(props: TableActionProps): JSX.Element {
-  const { rows, columns, href } = props;
+  const {
+    rows, columns, onDelete, onEdit,
+  } = props;
 
   return (
     <TableBS striped responsive hover>
@@ -34,14 +38,10 @@ function TableAction(props: TableActionProps): JSX.Element {
                 columns.map((column) => (<td key={`${row.id}${column.id}`}>{row[column.name]}</td>))
               }
               <td>
-                <ButtonToolbar aria-label="Toolbar button action">
-                  <ButtonGroup aria-label="Button group edit" className="me-2">
-                    <ButtonEdit href={`${href}/${row.id}`} />
-                  </ButtonGroup>
-                  <ButtonGroup aria-label="Button group delete">
-                    <ButtonDelete href={`${href}/${row.id}`} />
-                  </ButtonGroup>
-                </ButtonToolbar>
+                <ButtonGroup.Action
+                  onDelete={(): void => onDelete.mutate({ _id: row.id })}
+                  onEdit={`${onEdit}/${row.id}`}
+                />
               </td>
             </tr>
           ))

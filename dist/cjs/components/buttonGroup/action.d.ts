@@ -1,7 +1,7 @@
-/// <reference types="react" />
+import React from 'react';
 interface ButtonGroupActionProps {
-    editLink: string;
-    deleteLink: string;
+    onEdit: string;
+    onDelete: React.MouseEventHandler<HTMLButtonElement>;
 }
 declare function ButtonGroupAction(props: ButtonGroupActionProps): JSX.Element;
 export default ButtonGroupAction;

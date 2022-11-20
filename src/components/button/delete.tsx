@@ -1,21 +1,18 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
 import { Trash3Fill } from 'react-bootstrap-icons';
-import { LinkContainer } from 'react-router-bootstrap';
 
 interface ButtonDeleteProps {
-  href: string
+  onClick: React.MouseEventHandler<HTMLButtonElement>
 }
 function ButtonDelete(props: ButtonDeleteProps): JSX.Element {
-  const { href } = props;
+  const { onClick } = props;
   return (
-    <LinkContainer to={href}>
-      <Button variant="danger" size="sm">
-        <Trash3Fill />
-        {' '}
-        Edit
-      </Button>
-    </LinkContainer>
+    <Button variant="danger" size="sm" onClick={onClick}>
+      <Trash3Fill />
+      {' '}
+      Delete
+    </Button>
   );
 }
 

@@ -1,9 +1,10 @@
 /// <reference types="react" />
 import * as react_query from 'react-query';
+import { UseMutationResult } from 'react-query';
 import * as React from 'react';
 import React__default from 'react';
 import * as axios from 'axios';
-import { AxiosInstance } from 'axios';
+import { AxiosResponse, AxiosError, AxiosInstance } from 'axios';
 
 interface InterfaceGlobalStateAction {
     type: 'SET_USER';
@@ -51,7 +52,7 @@ interface ButtonAddProps {
 declare function ButtonAdd(props: ButtonAddProps): JSX.Element;
 
 interface ButtonDeleteProps {
-    href: string;
+    onClick: React__default.MouseEventHandler<HTMLButtonElement>;
 }
 declare function ButtonDelete(props: ButtonDeleteProps): JSX.Element;
 
@@ -67,8 +68,8 @@ declare const Button: {
 };
 
 interface ButtonGroupActionProps {
-    editLink: string;
-    deleteLink: string;
+    onEdit: string;
+    onDelete: React__default.MouseEventHandler<HTMLButtonElement>;
 }
 declare function ButtonGroupAction(props: ButtonGroupActionProps): JSX.Element;
 
@@ -115,7 +116,8 @@ interface TableActionProps {
     rows: {
         [keys: string]: string;
     }[];
-    href: string;
+    onDelete: UseMutationResult<AxiosResponse, AxiosError, unknown, void>;
+    onEdit: string;
 }
 declare function TableAction(props: TableActionProps): JSX.Element;
 

@@ -1,6 +1,6 @@
-/// <reference types="react" />
+import React from 'react';
 interface ButtonDeleteProps {
-    href: string;
+    onClick: React.MouseEventHandler<HTMLButtonElement>;
 }
 declare function ButtonDelete(props: ButtonDeleteProps): JSX.Element;
 export default ButtonDelete;

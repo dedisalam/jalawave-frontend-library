@@ -149,12 +149,11 @@ function ButtonAdd(props) {
 }
 
 function ButtonDelete(props) {
-    var href = props.href;
-    return (React.createElement(LinkContainer, { to: href },
-        React.createElement(Button$1, { variant: "danger", size: "sm" },
-            React.createElement(Trash3Fill, null),
-            ' ',
-            "Edit")));
+    var onClick = props.onClick;
+    return (React.createElement(Button$1, { variant: "danger", size: "sm", onClick: onClick },
+        React.createElement(Trash3Fill, null),
+        ' ',
+        "Delete"));
 }
 
 function ButtonEdit(props) {
@@ -173,12 +172,12 @@ var Button = {
 };
 
 function ButtonGroupAction(props) {
-    var editLink = props.editLink, deleteLink = props.deleteLink;
+    var onEdit = props.onEdit, onDelete = props.onDelete;
     return (React.createElement(ButtonToolbar, { "aria-label": "Toolbar button action" },
         React.createElement(ButtonGroup$1, { "aria-label": "Button group edit", className: "me-2" },
-            React.createElement(Button.Edit, { href: editLink })),
+            React.createElement(ButtonEdit, { href: onEdit })),
         React.createElement(ButtonGroup$1, { "aria-label": "Button group delete" },
-            React.createElement(Button.Delete, { href: deleteLink }))));
+            React.createElement(ButtonDelete, { onClick: onDelete }))));
 }
 
 var ButtonGroup = {
@@ -234,7 +233,7 @@ var Spinner = {
 };
 
 function TableAction(props) {
-    var rows = props.rows, columns = props.columns, href = props.href;
+    var rows = props.rows, columns = props.columns, onDelete = props.onDelete, onEdit = props.onEdit;
     return (React.createElement(Table$1, { striped: true, responsive: true, hover: true },
         React.createElement("thead", null,
             React.createElement("tr", null,
@@ -243,11 +242,7 @@ function TableAction(props) {
         React.createElement("tbody", null, rows.map(function (row) { return (React.createElement("tr", { key: row.id },
             columns.map(function (column) { return (React.createElement("td", { key: "".concat(row.id).concat(column.id) }, row[column.name])); }),
             React.createElement("td", null,
-                React.createElement(ButtonToolbar, { "aria-label": "Toolbar button action" },
-                    React.createElement(ButtonGroup$1, { "aria-label": "Button group edit", className: "me-2" },
-                        React.createElement(ButtonEdit, { href: "".concat(href, "/").concat(row.id) })),
-                    React.createElement(ButtonGroup$1, { "aria-label": "Button group delete" },
-                        React.createElement(ButtonDelete, { href: "".concat(href, "/").concat(row.id) })))))); }))));
+                React.createElement(ButtonGroup.Action, { onDelete: function () { return onDelete.mutate({ _id: row.id }); }, onEdit: "".concat(onEdit, "/").concat(row.id) })))); }))));
 }
 
 function Table(props) {
