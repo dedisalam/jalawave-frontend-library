@@ -1,42 +1,28 @@
 /// <reference types="react" />
-import * as react_query from 'react-query';
-import { UseMutationResult } from 'react-query';
-import * as React from 'react';
-import React__default from 'react';
+import * as _tanstack_react_query from '@tanstack/react-query';
+import { UseMutationResult } from '@tanstack/react-query';
 import * as axios from 'axios';
 import { AxiosResponse, AxiosError, AxiosInstance } from 'axios';
-
-interface InterfaceGlobalStateAction {
-    type: 'SET_USER';
-    payload: object | string;
-}
+import React from 'react';
 
 declare const Hook: {
-    App: (BACKEND_INSTANCE: axios.AxiosInstance, GlobalDispatchContext: React.Context<React.Dispatch<InterfaceGlobalStateAction>>) => {
-        response: axios.AxiosResponse<any, any> | undefined;
-        mutate: react_query.UseMutateFunction<unknown, unknown, void, unknown>;
-    };
-    AppLogin: (BACKEND_INSTANCE: axios.AxiosInstance) => {
-        response: axios.AxiosResponse<any, any> | undefined;
-        mutate: react_query.UseMutateFunction<unknown, unknown, void, unknown>;
-    };
     Logout: (BACKEND_INSTANCE: axios.AxiosInstance, FRONTEND_AUTH: string) => {
-        mutate: react_query.UseMutateFunction<unknown, unknown, void, unknown>;
+        mutate: _tanstack_react_query.UseMutateFunction<unknown, unknown, void, unknown>;
     };
 };
 
 interface TemplateFormProps {
-    children: React__default.ReactNode | React__default.ReactNode[];
+    children: React.ReactNode | React.ReactNode[];
 }
 declare function TemplateForm(props: TemplateFormProps): JSX.Element;
 
 interface TemplateLoadingProps {
-    children: React__default.ReactNode | React__default.ReactNode[];
+    children: React.ReactNode | React.ReactNode[];
 }
 declare function TemplateLoading(props: TemplateLoadingProps): JSX.Element;
 
 interface TemplateTableProps {
-    children: React__default.ReactNode | React__default.ReactNode[];
+    children: React.ReactNode | React.ReactNode[];
 }
 declare function TemplateTable(props: TemplateTableProps): JSX.Element;
 
@@ -52,7 +38,7 @@ interface ButtonAddProps {
 declare function ButtonAdd(props: ButtonAddProps): JSX.Element;
 
 interface ButtonDeleteProps {
-    onClick: React__default.MouseEventHandler<HTMLButtonElement>;
+    onClick: React.MouseEventHandler<HTMLButtonElement>;
 }
 declare function ButtonDelete(props: ButtonDeleteProps): JSX.Element;
 
@@ -69,7 +55,7 @@ declare const Button: {
 
 interface ButtonGroupActionProps {
     onEdit: string;
-    onDelete: React__default.MouseEventHandler<HTMLButtonElement>;
+    onDelete: React.MouseEventHandler<HTMLButtonElement>;
 }
 declare function ButtonGroupAction(props: ButtonGroupActionProps): JSX.Element;
 
@@ -78,19 +64,19 @@ declare const ButtonGroup: {
 };
 
 interface CardAddProps {
-    children: React__default.ReactNode | React__default.ReactNode[];
+    children: React.ReactNode | React.ReactNode[];
     title: string;
     href: string;
 }
 declare function CardAdd(props: CardAddProps): JSX.Element;
 
 interface CardLoginProps {
-    children: React__default.ReactNode | React__default.ReactNode[];
+    children: React.ReactNode | React.ReactNode[];
 }
 declare function CardLogin(props: CardLoginProps): JSX.Element;
 
 interface CardProps {
-    children: React__default.ReactNode | React__default.ReactNode[];
+    children: React.ReactNode | React.ReactNode[];
     title: string;
 }
 declare function Card(props: CardProps): JSX.Element;

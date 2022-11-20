@@ -1,7 +1,7 @@
 'use strict';
 
+var reactQuery = require('@tanstack/react-query');
 var React = require('react');
-var reactQuery = require('react-query');
 var reactBootstrap = require('react-bootstrap');
 var reactBootstrapIcons = require('react-bootstrap-icons');
 var reactRouterBootstrap = require('react-router-bootstrap');
@@ -59,46 +59,7 @@ function __generator(thisArg, body) {
     }
 }
 
-var HookApp = function (BACKEND_INSTANCE, GlobalDispatchContext) {
-    var _a = React.useState(), response = _a[0], setResponse = _a[1];
-    var dispatch = React.useContext(GlobalDispatchContext);
-    reactQuery.setLogger({ error: function () { }, warn: function () { }, log: function () { } });
-    var onSuccess = function (res) {
-        dispatch({ type: 'SET_USER', payload: res.data.user });
-        setResponse(res);
-    };
-    var onError = function (err) {
-        setResponse(err.response);
-    };
-    var mutation = reactQuery.useMutation(function () { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-        return [2 /*return*/, BACKEND_INSTANCE.get('/')];
-    }); }); }, { onSuccess: onSuccess, onError: onError });
-    return {
-        response: response,
-        mutate: mutation.mutate,
-    };
-};
-
-var HookAppLogin = function (BACKEND_INSTANCE) {
-    var _a = React.useState(), response = _a[0], setResponse = _a[1];
-    reactQuery.setLogger({ error: function () { }, warn: function () { }, log: function () { } });
-    var onSuccess = function (res) {
-        setResponse(res);
-    };
-    var onError = function (err) {
-        setResponse(err.response);
-    };
-    var mutation = reactQuery.useMutation(function () { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-        return [2 /*return*/, BACKEND_INSTANCE.get('/')];
-    }); }); }, { onSuccess: onSuccess, onError: onError });
-    return {
-        response: response,
-        mutate: mutation.mutate,
-    };
-};
-
 var HookLogout = function (BACKEND_INSTANCE, FRONTEND_AUTH) {
-    reactQuery.setLogger({ error: function () { }, warn: function () { }, log: function () { } });
     var onSuccess = function () {
         window.location.href = FRONTEND_AUTH;
     };
@@ -111,8 +72,6 @@ var HookLogout = function (BACKEND_INSTANCE, FRONTEND_AUTH) {
 };
 
 var Hook = {
-    App: HookApp,
-    AppLogin: HookAppLogin,
     Logout: HookLogout,
 };
 

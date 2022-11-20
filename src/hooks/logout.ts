@@ -1,13 +1,11 @@
-import { setLogger, useMutation } from 'react-query';
+import { useMutation } from '@tanstack/react-query';
+import type { UseMutateFunction } from '@tanstack/react-query';
 import type { AxiosInstance } from 'axios';
-import type { UseMutateFunction } from 'react-query';
 
 type HookLogoutFn = (BACKEND_INSTANCE: AxiosInstance, FRONTEND_AUTH: string) => {
   mutate: UseMutateFunction
 };
 const HookLogout: HookLogoutFn = (BACKEND_INSTANCE, FRONTEND_AUTH) => {
-  setLogger({ error: () => {}, warn: () => {}, log: () => {} });
-
   const onSuccess = (): void => {
     window.location.href = FRONTEND_AUTH;
   };

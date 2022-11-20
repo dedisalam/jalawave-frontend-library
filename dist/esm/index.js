@@ -1,5 +1,5 @@
-import React, { useState, useContext } from 'react';
-import { setLogger, useMutation } from 'react-query';
+import { useMutation } from '@tanstack/react-query';
+import React from 'react';
 import { Row, Col, Container, Button as Button$1, ButtonToolbar, ButtonGroup as ButtonGroup$1, Card as Card$1, Spinner as Spinner$1, Table as Table$1, Navbar as Navbar$1, Nav, NavDropdown, ListGroup, ListGroupItem } from 'react-bootstrap';
 import { PencilFill, Trash3Fill } from 'react-bootstrap-icons';
 import { LinkContainer } from 'react-router-bootstrap';
@@ -57,46 +57,7 @@ function __generator(thisArg, body) {
     }
 }
 
-var HookApp = function (BACKEND_INSTANCE, GlobalDispatchContext) {
-    var _a = useState(), response = _a[0], setResponse = _a[1];
-    var dispatch = useContext(GlobalDispatchContext);
-    setLogger({ error: function () { }, warn: function () { }, log: function () { } });
-    var onSuccess = function (res) {
-        dispatch({ type: 'SET_USER', payload: res.data.user });
-        setResponse(res);
-    };
-    var onError = function (err) {
-        setResponse(err.response);
-    };
-    var mutation = useMutation(function () { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-        return [2 /*return*/, BACKEND_INSTANCE.get('/')];
-    }); }); }, { onSuccess: onSuccess, onError: onError });
-    return {
-        response: response,
-        mutate: mutation.mutate,
-    };
-};
-
-var HookAppLogin = function (BACKEND_INSTANCE) {
-    var _a = useState(), response = _a[0], setResponse = _a[1];
-    setLogger({ error: function () { }, warn: function () { }, log: function () { } });
-    var onSuccess = function (res) {
-        setResponse(res);
-    };
-    var onError = function (err) {
-        setResponse(err.response);
-    };
-    var mutation = useMutation(function () { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-        return [2 /*return*/, BACKEND_INSTANCE.get('/')];
-    }); }); }, { onSuccess: onSuccess, onError: onError });
-    return {
-        response: response,
-        mutate: mutation.mutate,
-    };
-};
-
 var HookLogout = function (BACKEND_INSTANCE, FRONTEND_AUTH) {
-    setLogger({ error: function () { }, warn: function () { }, log: function () { } });
     var onSuccess = function () {
         window.location.href = FRONTEND_AUTH;
     };
@@ -109,8 +70,6 @@ var HookLogout = function (BACKEND_INSTANCE, FRONTEND_AUTH) {
 };
 
 var Hook = {
-    App: HookApp,
-    AppLogin: HookAppLogin,
     Logout: HookLogout,
 };
 

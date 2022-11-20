@@ -1,5 +1,5 @@
 /// <reference types="react" />
-import type { UseMutationResult } from 'react-query';
+import type { UseMutationResult } from '@tanstack/react-query';
 import type { AxiosError, AxiosResponse } from 'axios';
 interface TableActionProps {
     columns: {

@@ -1,7 +1,7 @@
 import ButtonGroup from '../buttonGroup';
 import React from 'react';
 import { Table as TableBS } from 'react-bootstrap';
-import type { UseMutationResult } from 'react-query';
+import type { UseMutationResult } from '@tanstack/react-query';
 import type { AxiosError, AxiosResponse } from 'axios';
 
 interface TableActionProps {
